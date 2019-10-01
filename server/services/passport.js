@@ -2,8 +2,11 @@
 const passport = require("passport");
 //used to instruct passport on how to authenticate
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../config/keys")
+const keys = require("../config/keys");
+const mongoose = require('mongoose');
 
+
+const User = mongoose.model('users');
 
 //creates a new instance of the google passport Strategy
 //tells passport to use this service
@@ -19,10 +22,7 @@ passport.use(
     //the info we get back from google, this is where we can create a user
     //save it to the DB
     (accessToken, refreshToken, profile, done) => {
-      console.log('Access Token:', accessToken);
-      console.log('Refresh Token:', refreshToken);
-      console.log('Profile:', profile);
-      
+      new User({ googleId: profile.id }).save();
     }
   )
 );

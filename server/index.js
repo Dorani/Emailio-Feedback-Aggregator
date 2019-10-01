@@ -1,14 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
-
-require('./services/passport');
-require('/.models/User')
 const app = express();
 
+require('./models/User')
+require('./services/passport');
 require('./routes/authRoutes')(app);
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/emaily");
 
 const PORT = process.env.PORT || 5000;
 
