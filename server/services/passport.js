@@ -22,7 +22,19 @@ passport.use(
     //the info we get back from google, this is where we can create a user
     //save it to the DB
     (accessToken, refreshToken, profile, done) => {
-      new User({ googleId: profile.id }).save();
+
+      //look through users collection and find the first record with a
+      //google id of profile id, this avoids dups
+
+      User.findOne({ googleId: profile.id })
+        .then((existingUser) => {
+          if (existingUser) {
+            //we already have a record with the given profile id
+          } else {
+            //we don't have this user, so make a new record
+            new User({ googleId: profile.id }).save();
+          };
+        })
     }
   )
 );
