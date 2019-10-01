@@ -26,7 +26,7 @@ passport.use(
       //look through users collection and find the first record with a
       //google id of profile id, this avoids dups
 
-      User.findOne({ googleId: profile.id })
+      User.findOne({ googleId: profile.id, displayName: profile.displayName  })
         .then((existingUser) => {
           if (existingUser) {
             //great we already have a record with the given profile id
@@ -35,7 +35,8 @@ passport.use(
             done(null, existingUser)
           } else {
             //we don't have this user, so make a new record
-            new User({ googleId: profile.id }).save()
+            new User({ googleId: profile.id, displayName: profile.displayName })
+              .save()
               .then(user => done(null, user));
           };
         })
