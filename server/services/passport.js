@@ -20,7 +20,11 @@ passport.serializeUser((user, done) => {
   //done is a callback, fyi, that we have to call
   // after we have done some work for nudgin passport along
     //first argument represents that nothing went wrong, null
-    //second is the identifying piece of info, to id the user on followup requests
+    //second is the identifying piece of info (short cut to the mongo generated id),
+    //so for the cookie - we will use the mongo id
+      //the reason is we can make use of multiple diff auth providers
+      //cause 1 user may have diff oauth strategies
+     to id the user on followup requests
   done(null, user.id);
 })
 
