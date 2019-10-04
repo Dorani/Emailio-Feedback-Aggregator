@@ -25,9 +25,25 @@ passport.serializeUser((user, done) => {
     //so for the cookie - we will use the mongo id
       //the reason is we can make use of multiple diff auth providers
       //cause 1 user may have diff oauth strategies
-     to id the user on followup requests
+      //to id the user on followup requests
   done(null, user.id);
-})
+});
+
+//Deserilaize user
+  //will take the id that we previously stuffed in the cookie
+  //and turn it back into a mongoose model instance
+
+passport.deserializeUser((id, done) => {
+  //we want to search over all of our diff users in our DB
+  //after we find a particular user
+  //we will call done with that user
+
+  User.findById(id)
+    .then((user) => {
+      done(null, user)
+    });
+});
+
 
 //creates a new instance of the google passport Strategy
 //tells passport to use this service
