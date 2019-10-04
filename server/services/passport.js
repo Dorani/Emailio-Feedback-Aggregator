@@ -8,6 +8,22 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
 
+//define a function and pass it to serialize user
+//first argument is user model
+  //which user? well - rememeber when our client comes from the oath flow
+  // the profile goes into the google strategy callback
+  //   from that callback, we either retrieve a user instance or we create a new one
+//So essentially, user represents, the "existingUser" we pulled out from
+//our strategy promise
+//second is done
+passport.serializeUser((user, done) => {
+  //done is a callback, fyi, that we have to call
+  // after we have done some work for nudgin passport along
+    //first argument represents that nothing went wrong, null
+    //second is the identifying piece of info, to id the user on followup requests
+  done(null, user.id);
+})
+
 //creates a new instance of the google passport Strategy
 //tells passport to use this service
 passport.use(
