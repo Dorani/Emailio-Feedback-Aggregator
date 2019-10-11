@@ -16,7 +16,11 @@ app.use(
     //allows us to specify multiple keys as an additional amount of security
     keys: [keys.cookieKey]
   })
-)
+);
+
+//tell passport to make use of cookies to handle authentication
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 require('./models/User')
