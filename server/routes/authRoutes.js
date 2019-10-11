@@ -26,4 +26,20 @@ module.exports = (app) => {
   //google will then exhange the code for a profile
 
   app.get("/auth/google/callback", passport.authenticate('google'));
+
+
+
+  //Api route that returns who is logged currently into our app
+                          //Flow:
+
+  //the request comes in, the cookie session we just wired up
+  // will extract all the data out the cookie
+  // passport pulls out the id
+  // that id is passed to the deserialize user function
+  // which turns the id into a user
+  // then that user is passed to our req object
+  // then the req goes to the route handler
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user)
+  });
 }
