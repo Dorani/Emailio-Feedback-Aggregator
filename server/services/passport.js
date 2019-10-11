@@ -36,7 +36,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   //we want to search over all of our diff users in our DB
   //after we find a particular user
-  //we will call done with that user
+  //we will call done with that user 
 
   User.findById(id)
     .then((user) => {

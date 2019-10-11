@@ -1,8 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 
 const keys = require("./config/keys");
+
+const app = express();
+
+app.use(
+  cookieSession({
+    //how long can the cookie live in the browser before it expires
+    //30 days before expiration
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    //key used to encrypt the cookie
+    keys: []
+  })
+)
+
 
 require('./models/User')
 require('./services/passport');
