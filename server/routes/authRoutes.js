@@ -28,6 +28,17 @@ module.exports = (app) => {
   app.get("/auth/google/callback", passport.authenticate('google'));
 
 
+  //whenever a authenticated makes a req to the following route,
+  //we will log that user out
+
+  app.get('/api/logout', (req, res) => {
+    //passport will help us logout
+    //attached to the req object
+    //takes the cookie and kills the id in there
+
+    req.logout();
+    res.send(req.user)
+  });
 
   //Api route that returns who is logged currently into our app
                           //Flow:
