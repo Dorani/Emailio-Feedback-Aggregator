@@ -14,9 +14,6 @@ module.exports = (app) => {
     })
   );
 
-
-
-
   //the second parameter of line 44 get request will not be handled by us,
   //the google strategy through passport, will do that for us, it will take the request and resolve it
   //into an actual profile.
@@ -37,7 +34,7 @@ module.exports = (app) => {
     //takes the cookie and kills the id in there
 
     req.logout();
-    res.send(req.user)
+    res.send('Logged out!', req.user)
   });
 
   //Api route that returns who is logged currently into our app
