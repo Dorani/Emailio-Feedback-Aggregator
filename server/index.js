@@ -13,7 +13,8 @@ app.use(
     //30 days before expiration
     maxAge: 30 * 24 * 60 * 60 * 1000,
     //key used to encrypt the cookie
-    keys: []
+    //allows us to specify multiple keys as an additional amount of security
+    keys: [keys.cookieKey]
   })
 )
 
