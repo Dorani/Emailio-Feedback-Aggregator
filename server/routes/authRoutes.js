@@ -24,7 +24,6 @@ module.exports = (app) => {
 
   app.get("/auth/google/callback", passport.authenticate('google'));
 
-
   //whenever a authenticated makes a req to the following route,
   //we will log that user out
 
@@ -47,7 +46,7 @@ module.exports = (app) => {
   // which turns the id into a user
   // then that user is passed to our req object
   // then the req goes to the route handler
-  
+
   app.get("/api/current_user", (req, res) => {
     res.send(req.user)
   });
