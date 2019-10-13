@@ -47,6 +47,7 @@ module.exports = (app) => {
   // which turns the id into a user
   // then that user is passed to our req object
   // then the req goes to the route handler
+  
   app.get("/api/current_user", (req, res) => {
     res.send(req.user)
   });
