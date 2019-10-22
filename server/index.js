@@ -18,6 +18,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send('Welcome!')
+});
+
 //tell passport to make use of cookies to handle authentication
 app.use(passport.initialize());
 app.use(passport.session());
