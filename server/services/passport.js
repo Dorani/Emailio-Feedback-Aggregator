@@ -36,7 +36,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   //we want to search over all of our diff users in our DB
   //after we find a particular user
-  //we will call done with that user 
+  //we will call done with that user
 
   User.findById(id)
     .then((user) => {
@@ -52,7 +52,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "http://localhost:5000/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
       //this is where the user will go while waiting to be authenticated
 
     },
