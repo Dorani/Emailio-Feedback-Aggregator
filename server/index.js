@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-
 const keys = require("./config/keys");
 const logger = require("morgan");
 const app = express();
@@ -11,10 +10,9 @@ app.use(logger("dev"));
 
 app.use(
   cookieSession({
-    //how long can the cookie live in the browser before it expires
-    //30 days before expiration
+    //Life of cookie on the browser, 30 days before expiration.
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    //key used to encrypt the cookie
+    //Key used to encrypt the cookie,
     //allows us to specify multiple keys as an additional amount of security
     keys: [keys.cookieKey]
   })
@@ -22,7 +20,7 @@ app.use(
 
 
 
-//tell passport to make use of cookies to handle authentication
+//Tell passport to make use of cookies to handle authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -30,21 +28,9 @@ app.use(passport.session());
 require('./models/User')
 require('./services/passport');
 require('./routes/authRoutes')(app);
-// Connect to the Mongo DB
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/emaily");
+
 mongoose.connect(keys.mongoURI);
 const PORT = process.env.PORT || 5000;
-
-
-
-
-
-
-
-
-
-
-
 
 
 
