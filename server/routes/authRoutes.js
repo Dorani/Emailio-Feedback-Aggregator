@@ -6,6 +6,8 @@ const passport = require('passport');
 //which we have access through the GoogleStrategy object:
 
 module.exports = (app) => {
+
+
   app.get("/auth/google", passport.authenticate('google', {
     //the scope specifies to google, what access we want to have more this users profile
     //these 2 strings, are not randomly made up

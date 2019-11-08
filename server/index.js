@@ -4,8 +4,10 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 
 const keys = require("./config/keys");
-
+const logger = require("morgan");
 const app = express();
+
+app.use(logger("dev"));
 
 app.use(
   cookieSession({
