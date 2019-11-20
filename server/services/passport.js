@@ -15,7 +15,7 @@ const User = mongoose.model('users');
   //   from that callback, we either retrieve a user instance or we create a new one
 //So essentially, user represents, the "existingUser" we pulled out from
 //our strategy promise
-//second is done
+//second parameter is done
 
 passport.serializeUser((user, done) => {
   //done is a callback, fyi, that we have to call
