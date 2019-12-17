@@ -59,20 +59,25 @@ passport.use(
     },
     //the info we get back from google, this is where we can create a user
     //save it to the DB
-    async (accessToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile, done) => {
+
       //look through users collection and find the first record with a
       //google id of profile id, this avoids dups
-      const existingUser = await User.findOne({ googleId: profile.id, displayName: profile.displayName})
-      if (existingUser) {
-        //great we already have a record with the given profile id
-        //this tells passport null means we are finished, here is the user we just created
-        //everything is done.
-        done(null, existingUser)
-      } else {
-        //we don't have this user, so make a new record
-        const user = await new User({ googleId: profile.id, displayName: profile.displayName }).save()
-        done(null, user);
-      };
+
+      User.findOne({ googleId: profile.id, displayName: profile.displayName  })
+        .then((existingUser) => {
+          if (existingUser) {
+            //great we already have a record with the given profile id
+            //this tells passport null means we are finished, here is the user we just created
+            //everything is done.
+            done(null, existingUser)
+          } else {
+            //we don't have this user, so make a new record
+            new User({ googleId: profile.id, displayName: profile.displayName })
+              .save()
+              .then(user => done(null, user));
+          };
+        })
     }
   )
 );

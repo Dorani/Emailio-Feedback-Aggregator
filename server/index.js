@@ -29,7 +29,11 @@ require('./models/User')
 require('./services/passport');
 require('./routes/authRoutes')(app);
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+useUnifiedTopology: true,
+useNewUrlParser: true,
+});
+
 const PORT = process.env.PORT || 5000;
 
 
