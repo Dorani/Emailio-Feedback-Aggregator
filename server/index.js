@@ -29,10 +29,16 @@ require('./models/User')
 require('./services/passport');
 require('./routes/authRoutes')(app);
 
+
+
 mongoose.connect(keys.mongoURI, {
-useUnifiedTopology: true,
-useNewUrlParser: true,
-});
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+}).then(()=>console.log("DB server connected"))
+  .catch(e => console.log("DB error", e));
+
+
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -43,5 +49,5 @@ const PORT = process.env.PORT || 5000;
 
 
 app.listen(PORT, () => {
-  console.log(`App is listening for request on ${PORT}`);
+  console.log(`App is listening for request on port ${PORT}`);
 });
