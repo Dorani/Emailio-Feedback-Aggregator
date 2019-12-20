@@ -8,4 +8,7 @@ import App from './components/App'
 
 const store = createStore(() => [], {}, applyMiddleware())
 
-ReactDom.render( <App />, document.querySelector('#root'));
+ReactDom.render(
+  <Provider store={store}><App /></Provider>,
+  document.querySelector('#root')
+);
