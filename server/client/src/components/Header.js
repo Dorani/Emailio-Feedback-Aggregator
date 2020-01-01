@@ -3,8 +3,20 @@ import { connect } from 'react-redux'
 
 
 class Header extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return "Still waiting from servers"
+
+      case false:
+        return "User is currently logged out"
+
+      default:
+        return "User is logged in!"
+    }
+  }
+
   render() {
-    console.log(this.props)
     return (
       <nav>
         <div className="nav-wrapper">
@@ -12,9 +24,7 @@ class Header extends Component {
             Emaily
           </a>
           <ul className="right">
-            <li>
-              <a href="/#">Login with Google</a>
-            </li>
+            {this.renderContent()}
           </ul>
         </div>
       </nav>
