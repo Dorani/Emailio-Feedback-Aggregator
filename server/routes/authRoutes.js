@@ -24,7 +24,14 @@ module.exports = (app) => {
   //so when we send this request to passport, in this case, passport will see the code into the url
   //google will then exhange the code for a profile
 
-  app.get("/auth/google/callback", passport.authenticate('google'));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+
+  );
 
   //whenever a authenticated makes a req to the following route,
   //we will log that user out
