@@ -42,8 +42,10 @@ module.exports = (app) => {
     //takes the cookie and kills the id in there
 
     req.logout();
-    res.send('Logged out!')
+    res.redirect('/')
   });
+
+
 
   //Api route that returns who is logged currently into our app
                           //Flow:
