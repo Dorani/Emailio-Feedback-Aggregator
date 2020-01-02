@@ -1,29 +1,9 @@
-// import React from 'react';
-//
-//
-// const Landing = () => {
-//   return (
-//   <div style={{textAlign: 'center'}}>
-//     <h1>
-//       Emaily!
-//     </h1>
-//     Collect feedback from your users!
-//   </div>
-//   );
-// }
-//
-//
-//
-//
-// export default Landing;
-
-
 import React, { Component } from 'react';
 
 
 const jumbotronStyle = {
   paddingBottom: '150px',
-  backgroundColor: "#e57373",
+  backgroundColor: "#80d8ff",
   textAlign: "center"
 }
 
