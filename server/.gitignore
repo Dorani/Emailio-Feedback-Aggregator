@@ -1,2 +1,4 @@
 dev.js
 node_modules
+.env.development
+.env.production
