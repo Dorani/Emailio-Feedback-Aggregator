@@ -8,7 +8,7 @@ const app = express();
 const bodyParser = require('body-parser')
 
 app.use(logger("dev"));
-app.user(bodyParser.json());
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     //Life of cookie on the browser, 30 days before expiration.
