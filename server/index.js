@@ -28,7 +28,7 @@ app.use(passport.session());
 require('./models/User')
 require('./services/passport');
 require('./routes/authRoutes')(app);
-
+require('./routes/billingRoutes')(app);
 
 
 mongoose.connect(keys.mongoURI, {
