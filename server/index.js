@@ -5,9 +5,10 @@ const passport = require('passport');
 const keys = require("./config/keys");
 const logger = require("morgan");
 const app = express();
+const bodyParser = require('body-parser')
 
 app.use(logger("dev"));
-
+app.user(bodyParser.json());
 app.use(
   cookieSession({
     //Life of cookie on the browser, 30 days before expiration.
@@ -17,8 +18,6 @@ app.use(
     keys: [keys.cookieKey]
   })
 );
-
-
 
 //Tell passport to make use of cookies to handle authentication
 app.use(passport.initialize());
@@ -34,8 +33,8 @@ require('./routes/billingRoutes')(app);
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
-}).then(()=>console.log("DB server connected"))
-  .catch(e => console.log("DB error", e));
+}).then( () => console.log("DB server connected"))
+  .catch( e => console.log("DB error", e));
 
 
 
