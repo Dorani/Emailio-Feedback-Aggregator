@@ -29,12 +29,31 @@ require('./services/passport');
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+//express behavior in production environment
+if (proceess.env.NODE_ENV === 'production') {
+  //Express will serve up production assests, ie: main.js/main.class
+  app.use(express.static('client/build'));
+  //Express will serve up the index.html file, if it does not recognize the route, catch all case
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+
+
+}
+
 
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 }).then( () => console.log("DB server connected"))
   .catch( e => console.log("DB error", e));
+
+
+
+
+
+
 
 
 
