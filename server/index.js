@@ -30,7 +30,7 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
 //express behavior in production environment
-if (proceess.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   //Express will serve up production assests, ie: main.js/main.class
   app.use(express.static('client/build'));
   //Express will serve up the index.html file, if it does not recognize the route, catch all case
