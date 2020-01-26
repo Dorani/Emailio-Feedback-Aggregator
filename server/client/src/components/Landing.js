@@ -8,8 +8,8 @@ const Landing = (props) => {
       <Jumbotron>
         <h1 className="display-3">Feedback Aggregating Tool</h1>
         <p className="lead">Welcome to Emaily, the feedback aggregating tool that allows you to connect with your
-        your users, obtain usefull feedback on your product and or service. The tool will provide you with a dashboard
-        with all your relevant data vis-a-vis specific campaigns that you issued via email.
+        users via email, obtain usefull feedback on your product and or service then it generates dashboard
+        with all your relevant data vis-a-vis the specific campaigns that you issued.
         </p>
         <hr className="my-2" />
         <p>If you would like to see a walkthrough please click on the learn more button!</p>
