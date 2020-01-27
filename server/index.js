@@ -24,7 +24,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-require('./models/User')
+require('./models/User');
+require('./models/Survey')
 require('./services/passport');
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
