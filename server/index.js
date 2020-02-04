@@ -29,6 +29,8 @@ require('./models/Survey')
 require('./services/passport');
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
+
 
 //express behavior in production environment
 if (process.env.NODE_ENV === 'production') {
