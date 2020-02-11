@@ -21,6 +21,6 @@ module.exports = app => {
       dateSent: Date.now()
     });
     //Send an email
-    const mailer = new Mailer(survey, surveyTemplate);
+    const mailer = new Mailer(survey, surveyTemplate(survey));
   });
 };
