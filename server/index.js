@@ -41,8 +41,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-
-
 }
 
 
@@ -51,11 +49,6 @@ mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true
 }).then( () => console.log("DB server connected"))
   .catch( e => console.log("DB error", e));
-
-
-
-
-
 
 
 
