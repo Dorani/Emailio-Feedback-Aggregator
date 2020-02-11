@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
+const surveyTemplates = require('../services/emailTemplates/surveyTemplate')
+
 
 const Survey = mongoose.model('surveys');
 
@@ -19,6 +21,6 @@ module.exports = app => {
       dateSent: Date.now()
     });
     //Send an email
-    const mailer = new Mailer(survey, template);
+    const mailer = new Mailer(survey, surveyTemplate);
   });
 };
