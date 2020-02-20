@@ -15,12 +15,24 @@ class Mailer extends helper.Mail {
     this.recipients = this.formatAddresses(recipients);
     //the Mail class has addContent built into it, we get it when we extend to it
     this.addContent(this.body);
+
+    //enable click tracking in our email
+    this.addClickTracking();
   }
 
   formatAddresses(recipients) {
     return recipients.map(({ email }) => {
       return new helper.Email(email);
     });
+  }
+
+  addClickTracking() {
+    const trackingSetting = new helper.TrackingSettings();
+    const clickTracking = new helper.ClickTracking(true, true);
+
+    trackingSettings.setClickTracking(clickTracking);
+
+    this.addTrackingSetting(trackingSettings);
   }
 }
 
