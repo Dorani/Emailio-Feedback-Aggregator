@@ -13,6 +13,8 @@ class Mailer extends helper.Mail {
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients);
+    //the Mail class has addContent built into it, we get it when we extend to it
+    this.addContent(this.body);
   }
 
   formatAddresses(recipients) {
