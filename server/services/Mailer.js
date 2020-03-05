@@ -45,8 +45,15 @@ class Mailer extends helper.Mail {
     this.addPersonalization(personalize)
   }
 
-  send() {
-    
+  async send() {
+    const request = this.sgApi.emptyRequest({
+      method: 'POST',
+      path: '/v3/mail/send',
+      body: this.toJson()
+    });
+
+    const response = this.sgApi.API(request);
+    return response;
   }
 }
 
